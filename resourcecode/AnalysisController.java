@@ -63,7 +63,7 @@ public class AnalysisController {
         try {
             RestTemplate restTemplate = new RestTemplate();
             String apiUrl = "https://api.deepseek.com/v1/chat/completions"; //
-            String apiKey = "Bearer sk-9acaf81acb254ae89412b299c255c83b";
+            String apiKey = "Bearer API密钥";
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
