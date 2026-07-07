@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>宿舍管理系统</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router@3/dist/vue-router.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="header" v-if="user.username">
+        <h2>宿舍管理系统</h2>
+        <div>
+            欢迎：{{user.username}}
+            <button @click="logout">退出登录</button>
+        </div>
+    </div>
+
+    <div class="nav" v-if="user.username">
+        <router-link to="/dorm"><button>宿舍信息管理</button></router-link>
+
+        <router-link to="/apply" v-if="user.username !== 'admin'"><button>调宿申请</button></router-link>
+
+        <router-link to="/audit" v-if="user.username === 'admin'"><button>调宿审批</button></router-link>
+    </div>
+
+    <div class="container">
+        <router-view></router-view>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
